@@ -1,0 +1,41 @@
+name: novo_projeto
+description: "A new Flutter project."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  shared_preferences: ^2.2.3
+  dots_indicator: ^3.0.0
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  flutter_native_splash: ^2.4.0
+
+# Seção específica do Flutter
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+
+# ------------------------------------------------------------------
+# Bloco de configuração da Splash Screen
+# Este é o único lugar onde ele deve estar: no final e sem indentação.
+# ------------------------------------------------------------------
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/logo.png
+
+
+
+  # Configurações para Android 12+
+  android_12:
+    color: "#FFFFFF"
+    image: assets/logo.png

@@ -1,0 +1,66 @@
+# Flutter
+# Folders
+.dart_tool/
+.idea/
+.pub/
+.pub-cache/
+build/
+
+# Files
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+app.dill
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+modules.xml
+workspace.xml
+
+# Android
+/android/app/src/main/assets/flutter_assets
+/android/app/build
+/android/build
+/android/app/build/
+/android/.gradle
+/android/key.properties
+/android/local.properties
+
+# iOS
+/ios/Pods/
+/ios/Flutter/App.framework
+/ios/Flutter/Flutter.framework
+/ios/Flutter/Generated.xcconfig
+/ios/Flutter/flutter_assets/
+/ios/Flutter/flutter_export_environment.sh
+/ios/Runner.xcworkspace/
+/ios/Runner/GeneratedPluginRegistrant.h
+/ios/Runner/GeneratedPluginRegistrant.m
+/ios/Runner/generated_main.m
+/ios/.symlinks/
+
+# macOS
+/macos/build/
+/macos/Flutter/ephemeral
+/macos/Pods/
+/macos/Runner.xcworkspace
+
+# Windows
+/windows/build/
+/windows/flutter/ephemeral
+/windows/runner/Debug/
+/windows/runner/Profile/
+/windows/runner/Release/
+
+# Linux
+/linux/build/
+/linux/flutter/ephemeral
+/linux/runner/Debug/
+/linux/runner/Profile/
+/linux/runner/Release/
+
+# Miscellaneous
+*.log
+*.lock
