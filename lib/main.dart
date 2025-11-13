@@ -17,11 +17,11 @@ void main() async {
   // Se a chave 'onboarding_completed' for true, não mostra o onboarding
   showOnboarding = prefs.getBool('onboarding_completed') ?? true;
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key}); // CORRIGIDO: Removido o 'const'
 
   @override
   Widget build(BuildContext context) {

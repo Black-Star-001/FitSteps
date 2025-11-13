@@ -50,7 +50,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     // Navega para a home, removendo todas as telas anteriores da pilha
     if (mounted) {
       Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
+        MaterialPageRoute(
+          builder: (context) => HomeScreen(),
+        ), // CORRIGIDO: Removido o 'const'
         (Route<dynamic> route) => false,
       );
     }

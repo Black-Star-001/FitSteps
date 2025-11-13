@@ -1,11 +1,12 @@
 // lib/screens/home_screen.dart
 
 import 'package:flutter/material.dart';
+import 'package:novo_projeto/models/exercise_model.dart'; // Importa o modelo de dados
 import 'package:novo_projeto/screens/splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key}); // CORRIGIDO: Removido o 'const'
 
   // 👇 Lendo a variável de ambiente 'APP_ENV'
   static const String appEnvironment = String.fromEnvironment(
@@ -13,11 +14,36 @@ class HomeScreen extends StatelessWidget {
     defaultValue: 'production',
   );
 
-  // 👇 Lendo a variável de ambiente 'API_URL' conforme o Exercício 2
-  static const String apiUrl = String.fromEnvironment(
-    'API_URL',
-    defaultValue: 'not-set', // Valor padrão pedido no exercício
-  );
+  // Lista de exercícios de exemplo
+  final List<Exercise> exercises = [
+    Exercise(
+      name: 'Alongamento de Pescoço',
+      description:
+          'Gire o pescoço lentamente para a direita e para a esquerda.',
+      duration: '30 segundos',
+    ),
+    Exercise(
+      name: 'Rotação de Ombros',
+      description: 'Gire os ombros para a frente e para trás.',
+      duration: '30 segundos',
+    ),
+    Exercise(
+      name: 'Alongamento de Braços',
+      description: 'Estique os braços acima da cabeça e para os lados.',
+      duration: '1 minuto',
+    ),
+    Exercise(
+      name: 'Agachamento',
+      description: 'Faça 15 agachamentos para fortalecer as pernas.',
+      duration: '1 minuto',
+    ),
+    Exercise(
+      name: 'Elevação de joelhos',
+      description:
+          'Eleve os joelhos alternadamente, como se estivesse marchando no lugar.',
+      duration: '1 minuto',
+    ),
+  ];
 
   void _resetOnboarding(BuildContext context) async {
     final prefs = await SharedPreferences.getInstance();
@@ -48,24 +74,44 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Bem-vindo ao aplicativo!',
-              style: TextStyle(fontSize: 22),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              'Escolha um exercício para sua pausa:',
+              style: Theme.of(context).textTheme.titleLarge,
             ),
-            const SizedBox(height: 20),
-            Text(
-              'Executando no ambiente: $appEnvironment',
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: exercises.length,
+              itemBuilder: (context, index) {
+                final exercise = exercises[index];
+                return Card(
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                    vertical: 8.0,
+                  ),
+                  child: ListTile(
+                    title: Text(exercise.name),
+                    subtitle: Text(exercise.description),
+                    trailing: Text(exercise.duration),
+                    onTap: () {
+                      // Ação ao tocar no exercício (será implementada no futuro)
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('${exercise.name} selecionado!'),
+                        ),
+                      );
+                    },
+                  ),
+                );
+              },
             ),
-            const SizedBox(height: 10), // Espaçamento
-            // 👇 Exibindo a API_URL conforme o Exercício 2
-            Text('API URL: $apiUrl', style: const TextStyle(fontSize: 16)),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
